@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="serif"
+        android:text="@string/login"
+        android:textSize="@dimen/titleText"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailLayout"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="352dp"
+        android:layout_height="75dp"
+        app:boxBackgroundColor="@color/gray"
+        app:boxStrokeColor="@color/black"
+        app:cursorColor="@color/black"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.113">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:hint="@string/label_email" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passLayout"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="352dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="7dp"
+        app:boxBackgroundColor="@color/gray"
+        app:boxStrokeColor="@color/black"
+        app:cursorColor="@color/black"
+        app:errorEnabled="true"
+        app:helperTextEnabled="true"
+        app:hintTextColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:hint="@string/label_password"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/signinButton"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="352dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="serif"
+        android:text="@string/signin"
+        android:textColor="@color/white"
+        android:textSize="7pt"
+        app:backgroundTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passLayout" />
+
+    <Button
+        android:id="@+id/googleButton"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="352dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="serif"
+        android:text="@string/signin_google"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        android:paddingRight="20pt"
+        app:rippleColor="@color/button_ripple_gray"
+        app:icon="@drawable/google_ico"
+        app:iconSize="22dp"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signinButton" />
+
+    <Button
+        android:id="@+id/regButton"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="352dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="serif"
+        android:text="@string/registration"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/white"
+        app:rippleColor="@color/button_ripple_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

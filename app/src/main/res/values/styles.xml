@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="navigationViewStyle">@style/Widget.App.NavigationView</item>
+    </style>
+
+    <style name="Widget.App.NavigationView" parent="Widget.Material3.NavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.NavigationView</item>
+        <item name="itemIconTint">@color/white</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="background">@color/black</item>
+    </style>
+
+    <style name="ThemeOverlay.App.NavigationView" parent="">
+        <item name="colorSecondaryContainer">@color/button_ripple_gray</item>
+        <item name="colorOnSecondaryContainer">@color/button_ripple_gray</item>
+        <item name="colorTertiaryContainer">@color/button_ripple_gray</item>
+        <item name="colorOnTertiaryContainer">@color/button_ripple_gray</item>
+        <item name="colorSurface">@color/button_ripple_gray</item>
+        <item name="colorOnSurface">@color/button_ripple_gray</item>
+        <item name="colorOnSurfaceVariant">@color/button_ripple_gray</item>
+        <item name="colorOutline">@color/button_ripple_gray</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.App.TitleSmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.App.LabelLarge</item>
+    </style>
+    <style name="TextAppearance.App.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">serif</item>
+        <item name="android:fontFamily">serif</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">serif</item>
+        <item name="android:fontFamily">serif</item>
+    </style>
+</resources>

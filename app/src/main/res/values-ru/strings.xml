@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ПК Строитель</string>
+    <string name="afternoon">Добрый день!</string>
+    <string name="evening">Добрый вечер!</string>
+    <string name="night">Доброй ночи!</string>
+    <string name="morning">Доброе утро!</string>
+    <string name="label_email">Почта</string>
+    <string name="label_password">Пароль</string>
+    <string name="login">Вход</string>
+    <string name="signup">Зарегистрироваться</string>
+    <string name="signin_google">Войти с Google</string>
+    <string name="signin">Войти</string>
+    <string name="registration">Регистрация</string>
+    <string name="google_signin_fail">Не удалось войти в систему Google</string>
+    <string name="auth_succes">Аутентификация прошла успешно</string>
+    <string name="auth_fail">Сбой аутентификации</string>
+    <string name="logout">Выйти из системы</string>
+    <string name="reg_succes">Регистрация прошла успешно</string>
+    <string name="reg_fail">Сбой регистрации</string>
+    <string name="label_password2">Поторите пароль</string>
+    <string name="min_sybols">Не менее 6 символов</string>
+    <string name="label_empty">Заполните поле!</string>
+    <string name="label_invalid">Неверная почта или пароль!</string>
+    <string name="label_notmatch">Пароли не совпадают!</string>
+    <string name="label_invalid_email">Неверная почта!</string>
+    <string name="settings_title">Настройки</string>
+    <string name="home_title">Главная</string>
+    <string name="study_title">Обучение</string>
+    <string name="build_title">Сборка</string>
+    <string name="favorite_bar">Избранное</string>
+    <string name="search_bar">Поиск</string>
+</resources>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">PC Builder</string>
+    <string name="evening">Good Evening!</string>
+    <string name="night">Good Night!</string>
+    <string name="morning">Good Morning!</string>
+    <string name="afternoon">Good Afternoon!</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="login">Login</string>
+    <string name="signup">Register</string>
+    <string name="signin_google">Sign in with Google</string>
+    <string name="signin">Sign In</string>
+    <string name="registration">Registration</string>
+    <string name="google_signin_fail">Google sign in failed</string>
+    <string name="auth_succes">Authentification succesful</string>
+    <string name="auth_fail">Authentification failed</string>
+    <string name="default_web_client_id" translatable="false">996470208642-nbdr5ve0u4sec6m2e22fedc0727v3ptf.apps.googleusercontent.com</string>
+    <string name="logout">Log Out</string>
+    <string name="reg_succes">Registration succes</string>
+    <string name="reg_fail">Registration failed</string>
+    <string name="label_password2">Repeat password</string>
+    <string name="min_sybols">At least 6 characters</string>
+    <string name="label_empty">Fill in the field!</string>
+    <string name="label_invalid">Invalid email or password!</string>
+    <string name="label_notmatch">Passwords don\'t match!</string>
+    <string name="label_invalid_email">Invalid Email!</string>
+    <string name="settings_title">Settings</string>
+    <string name="home_title">Home</string>
+    <string name="study_title">Study</string>
+    <string name="build_title">Build</string>
+    <string name="favorite_bar">Favorite</string>
+    <string name="search_bar">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+</resources>

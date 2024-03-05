@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "996470208642",
+    "project_id": "graduate-93880",
+    "storage_bucket": "graduate-93880.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996470208642:android:68efc3f8437cd9418b9c9b",
+        "android_client_info": {
+          "package_name": "com.example.pc_builder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE9aC_QKcS4tQH3_x6X6AS_9cyAkTXoCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
