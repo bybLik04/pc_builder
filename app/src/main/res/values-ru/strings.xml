@@ -30,4 +30,6 @@
     <string name="build_title">Сборка</string>
     <string name="favorite_bar">Избранное</string>
     <string name="search_bar">Поиск</string>
+    <string name="label_empty_all">Заполните все поля!</string>
+    <string name="greeting_home">Добро пожаловать!</string>
 </resources>

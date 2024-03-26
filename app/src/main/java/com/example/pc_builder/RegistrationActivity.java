@@ -40,7 +40,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         binding.signupButton.setOnClickListener(v -> {
             firebaseRegWithEmail();
-            Log.w("SignInActivity", "signInWithCredential:failure");
         });
     }
     private void firebaseRegWithEmail() {
@@ -48,7 +47,11 @@ public class RegistrationActivity extends AppCompatActivity {
         String password = binding.passTextInput.getText().toString();
         String password2 = binding.pass2TextInput.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || password2.isEmpty()){
+        if (email.isEmpty() && password.isEmpty() && password2.isEmpty()){
+            binding.emailInputLayout.setError(getString(R.string.label_empty_all));
+            binding.passInputLayout.setError(" ");
+            binding.pass2InputLayout.setError(" ");
+        } else if (email.isEmpty() || password.isEmpty() || password2.isEmpty()) {
             if (email.isEmpty()){
                 binding.emailInputLayout.setError(getString(R.string.label_empty));
                 binding.passInputLayout.setError(null);
@@ -89,10 +92,10 @@ public class RegistrationActivity extends AppCompatActivity {
                                 editor.putString("Uid", uid);
                                 editor.apply();
                                 startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
-                                Toast.makeText(RegistrationActivity.this, getString(R.string.auth_succes), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegistrationActivity.this, getString(R.string.reg_succes), Toast.LENGTH_SHORT).show();
                             } else {
                                 Log.w("RegActivity", "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(RegistrationActivity.this, getString(R.string.auth_fail),
+                                Toast.makeText(RegistrationActivity.this, getString(R.string.reg_fail),
                                         Toast.LENGTH_SHORT).show();
                             }
                         }

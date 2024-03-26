@@ -8,13 +8,16 @@
         <item
             android:id="@+id/study_item"
             android:icon="@drawable/menu_book_ico"
-            android:title="@string/study_title" />
+            android:title="@string/study_title"
+            android:enabled="true"/>
         <item
             android:id="@+id/build_item"
             android:icon="@drawable/storage_ico"
-            android:title="@string/build_title" />
+            android:title="@string/build_title"
+            android:enabled="true"/>
         <item
             android:id="@+id/settings_item"
             android:icon="@drawable/settings_ico"
-            android:title="@string/settings_title" />
+            android:title="@string/settings_title"
+            android:enabled="true"/>
     </menu>

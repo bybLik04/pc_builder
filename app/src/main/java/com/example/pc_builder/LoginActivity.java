@@ -107,14 +107,17 @@ public class LoginActivity extends AppCompatActivity {
         String email = binding.emailTextInput.getText().toString();
         String password = binding.passTextInput.getText().toString();
         
-        if (email.isEmpty() || password.isEmpty()){
-             if (email.isEmpty()){
-                 binding.emailLayout.setError(getString(R.string.label_empty));
-                 binding.passLayout.setError(null);
-             } else {
-                 binding.passLayout.setError(getString(R.string.label_empty));
-                 binding.emailLayout.setError(null);
-             }
+        if (email.isEmpty() && password.isEmpty()){
+            binding.emailLayout.setError(getString(R.string.label_empty_all));
+            binding.passLayout.setError(" ");
+        } else if (email.isEmpty() || password.isEmpty()){
+        if (email.isEmpty()){
+            binding.emailLayout.setError(getString(R.string.label_empty));
+            binding.passLayout.setError(null);
+        } else {
+            binding.passLayout.setError(getString(R.string.label_empty));
+            binding.emailLayout.setError(null);
+        }
         } else {
             binding.emailLayout.setError(null);
             binding.passLayout.setError(null);
@@ -134,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                                 binding.emailLayout.setError(" ");
-                                binding.passLayout.setError(getString(R.string.label_notmatch));
+                                binding.passLayout.setError(getString(R.string.label_invalid));
                             }
                         }
                     });

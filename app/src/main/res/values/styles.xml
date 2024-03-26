@@ -3,20 +3,20 @@
     <style name="Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
 
         <item name="navigationViewStyle">@style/Widget.App.NavigationView</item>
+
     </style>
 
     <style name="Widget.App.NavigationView" parent="Widget.Material3.NavigationView">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.NavigationView</item>
         <item name="itemIconTint">@color/white</item>
         <item name="itemTextColor">@color/white</item>
-        <item name="background">@color/black</item>
     </style>
 
     <style name="ThemeOverlay.App.NavigationView" parent="">
-        <item name="colorSecondaryContainer">@color/button_ripple_gray</item>
-        <item name="colorOnSecondaryContainer">@color/button_ripple_gray</item>
-        <item name="colorTertiaryContainer">@color/button_ripple_gray</item>
-        <item name="colorOnTertiaryContainer">@color/button_ripple_gray</item>
+        <item name="colorSecondaryContainer">@color/button_gray</item>
+        <item name="colorOnSecondaryContainer">@color/button_gray</item>
+        <item name="colorTertiaryContainer">@color/button_gray</item>
+        <item name="colorOnTertiaryContainer">@color/button_gray</item>
         <item name="colorSurface">@color/button_ripple_gray</item>
         <item name="colorOnSurface">@color/button_ripple_gray</item>
         <item name="colorOnSurfaceVariant">@color/button_ripple_gray</item>

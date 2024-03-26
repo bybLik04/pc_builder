@@ -6,12 +6,15 @@
         android:id="@+id/search_bar"
         android:icon="@drawable/search_ico"
         android:title="@string/search_bar"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom|collapseActionView"/>
+        <!--app:actionLayout="@layout/search_view_layout"
+        app:showAsAction="ifRoom|collapseActionView" -->
 
     <item
         android:id="@+id/favorite_bar"
         android:icon="@drawable/favorite_ico"
         android:title="@string/favorite_bar"
+        android:visible="false"
         app:showAsAction="ifRoom" />
 
 </menu>

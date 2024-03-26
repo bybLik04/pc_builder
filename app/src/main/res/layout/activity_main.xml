@@ -41,7 +41,6 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-            <!-- Note: A RecyclerView can also be used -->
             <FrameLayout
                 android:id="@+id/frameLayout"
                 android:layout_width="match_parent"
@@ -49,7 +48,6 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <!-- Scrollable content -->
-
             </FrameLayout>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

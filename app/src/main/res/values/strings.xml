@@ -32,4 +32,6 @@
     <string name="search_bar">Search</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="label_empty_all">Fill in all fields!</string>
+    <string name="greeting_home">Welcome!</string>
 </resources>
