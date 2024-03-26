@@ -15,6 +15,11 @@ import com.example.pc_builder.databinding.ActivitySplashScreenBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Calendar;
 
 public class SplashScreen extends AppCompatActivity {
@@ -38,6 +43,7 @@ public class SplashScreen extends AppCompatActivity {
         ObjectAnimator textAnimator = ObjectAnimator.ofFloat(binding.greetingText, "translationY", 0f);
         textAnimator.setDuration(1200);
         textAnimator.start();
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
