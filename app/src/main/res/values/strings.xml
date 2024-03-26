@@ -34,4 +34,7 @@
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="label_empty_all">Fill in all fields!</string>
     <string name="greeting_home">Welcome!</string>
+    <string name="part1_title">Part 1: Basic Computer Components</string>
+    <string name="part2_title">Part 2: Computer Assembly</string>
+    <string name="part3_title">Knowledge testing</string>
 </resources>

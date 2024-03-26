@@ -18,6 +18,8 @@ import com.example.pc_builder.databinding.ActivityLoginBinding;
 import com.example.pc_builder.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth;
@@ -51,6 +53,13 @@ public class MainActivity extends AppCompatActivity {
             binding.drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
+
+        try {
+            DatabaseHelper dbHelper = new DatabaseHelper(this);
+            dbHelper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     private void setNewFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

@@ -32,4 +32,7 @@
     <string name="search_bar">Поиск</string>
     <string name="label_empty_all">Заполните все поля!</string>
     <string name="greeting_home">Добро пожаловать!</string>
+    <string name="part1_title">Часть 1: Основные компоненты компьютера</string>
+    <string name="part2_title">Часть 2: Сборка компьютера</string>
+    <string name="part3_title">Тестирование знаний</string>
 </resources>

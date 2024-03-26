@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DBNavigator.Project.DDLFileAttachmentManager">
+    <mappings />
+    <preferences />
+  </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
@@ -11,8 +15,16 @@
       <console name="con" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
+  <component name="DBNavigator.Project.DatabaseEditorStateManager">
+    <last-used-providers />
+  </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="e6dcfa37-1213-4d9a-94c5-65514cf4042b" dataset="main.titles" active-filter-id="" />
+    <filter-actions connection-id="e6dcfa37-1213-4d9a-94c5-65514cf4042b" dataset="main.build_lessons" active-filter-id="" />
+    <filter-actions connection-id="e6dcfa37-1213-4d9a-94c5-65514cf4042b" dataset="main.study_lessons" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />

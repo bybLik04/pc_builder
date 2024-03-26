@@ -34,7 +34,8 @@ android {
 }
 
 dependencies {
-
+    //implementation (libs.sqlite)
+    // (libs.sqlite.framework)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
