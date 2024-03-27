@@ -47,6 +47,7 @@ dependencies {
     implementation(libs.play.services.auth)
     implementation(libs.preference)
     implementation(libs.window)
+    implementation(libs.legacy.support.v4)
     //implementation (libs.cardview.v7)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

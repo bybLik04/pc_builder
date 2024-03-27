@@ -28,7 +28,7 @@
                 android:layout_height="120dp"
 
                 android:scaleType="fitXY"
-                android:src="@drawable/studyhomeimage" />
+                android:src="@drawable/studylessons" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -61,7 +61,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/rb1" />
+                android:src="@drawable/studybuildimage" />
 
             <TextView
                 android:id="@+id/part2Text"
@@ -94,7 +94,7 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/rb1" />
+                android:src="@drawable/studytest" />
 
             <TextView
                 android:id="@+id/part3Text"

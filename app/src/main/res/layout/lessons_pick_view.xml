@@ -67,7 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Просмотрено"
+                    android:text="@string/viewed_lesson"
                     android:textColor="?android:attr/textColorSecondary"
                     android:layout_gravity="bottom|end"
                     android:gravity="end"/>

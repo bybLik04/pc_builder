@@ -17,6 +17,7 @@ playServicesAuth = "21.0.0"
 preference = "1.2.1"
 sqlite = "2.4.0"
 window = "1.2.0"
+legacySupportV4 = "1.0.0"
 
 [libraries]
 cardview-v7 = { module = "com.android.support:cardview-v7", version.ref = "cardviewV7" }
@@ -37,6 +38,7 @@ preference = { group = "androidx.preference", name = "preference", version.ref =
 sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
 sqlite-framework = { module = "androidx.sqlite:sqlite-framework", version.ref = "sqlite" }
 window = { group = "androidx.window", name = "window", version.ref = "window" }
+legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

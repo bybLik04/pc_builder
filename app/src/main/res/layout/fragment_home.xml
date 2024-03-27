@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="Чем будем заниматься?"
+            android:text="@string/titlehome_2"
             android:textColor="@color/black"
             android:textSize="10pt" />
 
@@ -54,7 +54,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:text="Продолжим обучение?"
+                            android:text="@string/continue_studies"
                             android:textAppearance="?attr/textAppearanceTitleLarge" />
 
 
@@ -76,7 +76,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Текущая тема: Микропроцессоры"
+                            android:text="@string/testbody_card"
                             android:textAppearance="?attr/textAppearanceBodyLarge"
                             android:textColor="?android:attr/textColorSecondary" />
 
@@ -91,10 +91,10 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/studyHomeButton"
-                            android:layout_width="0dp"
+                            android:layout_width="140dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="Продолжим" />
+                            android:text="@string/continue_button" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -126,7 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:text="Соберем компьютер"
+                        android:text="@string/homebuildcard"
                         android:textAppearance="?attr/textAppearanceTitleLarge" />
 
                     <androidx.cardview.widget.CardView
@@ -155,9 +155,9 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/buildHomeButton"
-                        android:layout_width="match_parent"
+                        android:layout_width="140dp"
                         android:layout_height="match_parent"
-                        android:text="Собрать" />
+                        android:text="@string/build_button_home" />
                 </LinearLayout>
 
             </LinearLayout>

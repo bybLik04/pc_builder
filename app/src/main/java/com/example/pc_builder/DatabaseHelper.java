@@ -1,18 +1,12 @@
 package com.example.pc_builder;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Context;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,27 +37,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void createDataBase() throws IOException {
-        /*boolean dbExist = checkDataBase();
-        if (!dbExist) {*/
-            this.getReadableDatabase();
-            try {
-                copyDataBase();
-            } catch (IOException e) {
-                throw new Error("Error copying database");
-            }
-//        }
+        this.getReadableDatabase();
+        try {
+            copyDataBase();
+        } catch (IOException e) {
+            throw new Error("Error copying database");
+        }
     }
-
-/*    private boolean checkDataBase() {
-        File dbFile = new File(DB_PATH + DATABASE_NAME);
-        return dbFile.exists();
-    }*/
 
     private void copyDataBase() throws IOException {
         InputStream myInput = mContext.getAssets().open(DATABASE_NAME);
         String outFileName = DB_PATH + DATABASE_NAME;
         OutputStream myOutput = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             myOutput = Files.newOutputStream(Paths.get(outFileName));
         }
 
@@ -94,8 +80,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<Lesson> getAllLessons() {
-        List<Lesson> lessons = new ArrayList<>();
+    public String getNextLesson(String currentLessonNumber) {
+        String lessonText = null;
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery("SELECT * FROM study_lessons WHERE LessonNumber > ? ORDER BY LessonNumber ASC LIMIT 1", new String[]{currentLessonNumber});
+            if (cursor != null && cursor.moveToFirst()) {
+                lessonText = cursor.getString(cursor.getColumnIndex("LessonText"));
+                Log.d(TAG, lessonText);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return lessonText;
+    }
+
+    public String getLessonDetails(String lessonNumber){
+        String lessonText = null;
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery("SELECT * FROM study_lessons WHERE LessonNumber = ?", new String[]{lessonNumber});
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    lessonText = cursor.getString(cursor.getColumnIndex("LessonText"));
+                    Log.d("да", lessonText);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return lessonText;
+    }
+
+    public List<Lessons> getAllLessons() {
+        List<Lessons> lessons = new ArrayList<>();
         Cursor cursor = null;
         try {
             cursor = db.rawQuery("SELECT * FROM study_titles", null);
@@ -109,7 +135,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     String mark = cursor.getString(cursor.getColumnIndex("Mark"));
                     int checked = cursor.getInt(cursor.getColumnIndex("Cheked"));
 
-                    Lesson lesson = new Lesson(id, lessonNumber, title, image, mark, checked);
+                    Lessons lesson = new Lessons(id, lessonNumber, title, image, mark, checked);
                     lessons.add(lesson);
                 }
             }

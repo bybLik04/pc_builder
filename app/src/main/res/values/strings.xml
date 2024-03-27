@@ -37,4 +37,11 @@
     <string name="part1_title">Part 1: Basic Computer Components</string>
     <string name="part2_title">Part 2: Computer Assembly</string>
     <string name="part3_title">Knowledge testing</string>
+    <string name="titlehome_2">What are we going to do?</string>
+    <string name="continue_studies">Shall we continue our studies?</string>
+    <string name="testbody_card" translatable="false">Текущая тема: Микропроцессоры</string>
+    <string name="homebuildcard">Let\'s build a computer</string>
+    <string name="continue_button">Continue</string>
+    <string name="build_button_home">Build</string>
+    <string name="viewed_lesson">Viewed</string>
 </resources>

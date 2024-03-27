@@ -35,4 +35,10 @@
     <string name="part1_title">Часть 1: Основные компоненты компьютера</string>
     <string name="part2_title">Часть 2: Сборка компьютера</string>
     <string name="part3_title">Тестирование знаний</string>
+    <string name="titlehome_2">Чем будем заниматься?</string>
+    <string name="continue_studies">Продолжим обучение?</string>
+    <string name="homebuildcard">Соберем компьютер</string>
+    <string name="continue_button">Продолжим</string>
+    <string name="build_button_home">Собрать</string>
+    <string name="viewed_lesson">Просмотрено</string>
 </resources>

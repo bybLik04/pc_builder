@@ -1,8 +1,6 @@
 package com.example.pc_builder;
 
-import android.graphics.Bitmap;
-
-public class Lesson {
+public class Lessons {
     private int id;
     private String mLessonNumber;
     private String mTitle;
@@ -10,7 +8,7 @@ public class Lesson {
     private String mMark;
     private int mChecked;
 
-    public Lesson(int id, String mLessonNumber, String mTitle, String image, String mMark, int mChecked) {
+    public Lessons(int id, String mLessonNumber, String mTitle, String image, String mMark, int mChecked) {
         this.id = id;
         this.mLessonNumber = mLessonNumber;
         this.mTitle = mTitle;
