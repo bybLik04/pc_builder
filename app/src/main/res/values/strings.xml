@@ -44,4 +44,9 @@
     <string name="continue_button">Continue</string>
     <string name="build_button_home">Build</string>
     <string name="viewed_lesson">Viewed</string>
+    <string name="about_settings">About App</string>
+    <string name="github_settings">PCBuilder GitHub</string>
+    <string name="settings_github_body">Submit bugs and feature requests.</string>
+    <string name="settings_about_body">With love from BybLik</string>
+    <string name="me">Designer and Developer:\n Kirill Rykhlov\n Contact with me: rihlov.kirill@gmail.com</string>
 </resources>

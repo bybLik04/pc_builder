@@ -41,4 +41,9 @@
     <string name="continue_button">Продолжим</string>
     <string name="build_button_home">Собрать</string>
     <string name="viewed_lesson">Просмотрено</string>
+    <string name="about_settings">О приложении</string>
+    <string name="github_settings">ПК Строитель GitHub</string>
+    <string name="settings_github_body">Отправляйте ошибки и идеи нововведений.</string>
+    <string name="settings_about_body">С любовью от BybLik</string>
+    <string name="me">"Дизайнер и разработчик:\nКирилл Рыхлов\nМои контакты:\nrihlov.kirill@gmail.com"</string>
 </resources>

@@ -6,36 +6,35 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.pc_builder.databinding.ActivityMainBinding;
 import com.example.pc_builder.databinding.FragmentSettingsBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SettingsFragment extends Fragment {
+
     private FragmentSettingsBinding binding;
     private FirebaseAuth mAuth;
-    private ActivityMainBinding mainBinding;
+
     public SettingsFragment() {
         // Required empty public constructor
     }
 
-    public static SettingsFragment newInstance(String param1, String param2) {
-        SettingsFragment fragment = new SettingsFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public static SettingsFragment newInstance() {
+        return new SettingsFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = FragmentSettingsBinding.inflate(getLayoutInflater());
         mAuth = FirebaseAuth.getInstance();
-        mainBinding = ActivityMainBinding.inflate(getLayoutInflater());
     }
 
     @Override
@@ -43,6 +42,17 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentSettingsBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+
+        List<SettingsItem> settingsList = new ArrayList<>();
+        settingsList.add(new SettingsItem(R.drawable.ic_github, getString(R.string.about_settings),getString(R.string.settings_about_body), ""));
+        settingsList.add(new SettingsItem(R.drawable.ic_github2, getString(R.string.github_settings),getString(R.string.settings_github_body), "https://github.com/bybLik04"));
+
+        SettingsAdapter adapter = new SettingsAdapter(requireContext(), settingsList);
+        binding.rvSettings.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
+        binding.rvSettings.setLayoutManager(layoutManager);
+
         SharedPreferences preferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
         binding.logoutBtn.setOnClickListener(v -> {
@@ -53,6 +63,7 @@ public class SettingsFragment extends Fragment {
             startActivity(new Intent(getActivity(), LoginActivity.class));
             getActivity().finish();
         });
+
         return view;
     }
 }
