@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10pt"
+    android:paddingStart="10pt"
+    android:paddingEnd="10pt"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <EditText
+            android:id="@+id/newBuildTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:hint="@string/dialog_edittext" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

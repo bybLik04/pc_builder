@@ -18,6 +18,12 @@
         android:theme="@style/Theme.PC_Builder"
         tools:targetApi="31">
         <activity
+            android:name=".PartInfActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuildInfActivity"
+            android:exported="false" />
+        <activity
             android:name=".AboutAppActivity"
             android:exported="false" />
         <activity

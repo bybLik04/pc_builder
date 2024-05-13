@@ -44,6 +44,13 @@
     <string name="about_settings">О приложении</string>
     <string name="github_settings">ПК Строитель GitHub</string>
     <string name="settings_github_body">Отправляйте ошибки и идеи нововведений.</string>
-    <string name="settings_about_body">С любовью от BybLik</string>
+    <string name="settings_about_body">С любовью от BybLik🖤</string>
     <string name="me">"Дизайнер и разработчик:\nКирилл Рыхлов\nМои контакты:\nrihlov.kirill@gmail.com"</string>
+    <string name="fab_add">Создать сборку</string>
+    <string name="empty_cpu">Нет процессора</string>
+    <string name="empty_gpu">Нет видеокарты</string>
+    <string name="dialog_add">Создать</string>
+    <string name="dialog_cancel">Отменить</string>
+    <string name="dialog_title">Создать новую сборку</string>
+    <string name="dialog_edittext">Введите название.</string>
 </resources>

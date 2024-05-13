@@ -28,15 +28,24 @@
             android:textSize="10pt" />
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/white"
-                app:cardElevation="4dp">
+                        android:id="@+id/card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="16dp"
+                        android:backgroundTint="@color/white"
+                        app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -46,9 +55,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:padding="16dp"
-                        android:layout_weight="1">
+                        android:padding="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -76,6 +85,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:visibility="gone"
                             android:text="@string/testbody_card"
                             android:textAppearance="?attr/textAppearanceBodyLarge"
                             android:textColor="?android:attr/textColorSecondary" />
@@ -91,77 +101,79 @@
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/studyHomeButton"
-                            android:layout_width="140dp"
+                            android:layout_width="142dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="@string/continue_button" />
                     </LinearLayout>
 
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/white"
-            app:cardElevation="2dp">
-
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/white"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/homebuildcard"
+                            android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="14dp">
+
+                            <ImageView
+                                android:id="@+id/buildHomeImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/buildhomeimage" />
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/homebuildcard"
-                        android:textAppearance="?attr/textAppearanceTitleLarge" />
+                        android:layout_gravity="end"
+                        android:layout_margin="8dp"
+                        android:orientation="horizontal">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="14dp"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:id="@+id/buildHomeImage"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/buildhomeimage" />
-                    </androidx.cardview.widget.CardView>
-
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buildHomeButton"
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:text="@string/build_button_home" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal">
+            </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/buildHomeButton"
-                        android:layout_width="140dp"
-                        android:layout_height="match_parent"
-                        android:text="@string/build_button_home" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

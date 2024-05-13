@@ -45,7 +45,7 @@ public class SettingsFragment extends Fragment {
 
         List<SettingsItem> settingsList = new ArrayList<>();
         settingsList.add(new SettingsItem(R.drawable.ic_github, getString(R.string.about_settings),getString(R.string.settings_about_body), ""));
-        settingsList.add(new SettingsItem(R.drawable.ic_github2, getString(R.string.github_settings),getString(R.string.settings_github_body), "https://github.com/bybLik04"));
+        settingsList.add(new SettingsItem(R.drawable.ic_github2, getString(R.string.github_settings),getString(R.string.settings_github_body), "https://github.com/bybLik04/pc_builder"));
 
         SettingsAdapter adapter = new SettingsAdapter(requireContext(), settingsList);
         binding.rvSettings.setAdapter(adapter);

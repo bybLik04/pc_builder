@@ -47,6 +47,14 @@
     <string name="about_settings">About App</string>
     <string name="github_settings">PCBuilder GitHub</string>
     <string name="settings_github_body">Submit bugs and feature requests.</string>
-    <string name="settings_about_body">With love from BybLik</string>
+    <string name="settings_about_body">With love from BybLik🖤</string>
     <string name="me">Designer and Developer:\n Kirill Rykhlov\n Contact with me: rihlov.kirill@gmail.com</string>
+    <string name="fab_add">Add Build</string>
+    <string name="ruble" translatable="false">₽</string>
+    <string name="empty_cpu">Empty CPU</string>
+    <string name="empty_gpu">Empty GPU</string>
+    <string name="dialog_add">Create</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_title">Create new Build</string>
+    <string name="dialog_edittext">Enter a name.</string>
 </resources>
