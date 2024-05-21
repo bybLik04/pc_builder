@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="@color/black"
             android:minHeight="?attr/actionBarSize"
-            app:menu="@menu/lesson_top_app_bar"
+            app:menu="@menu/build_top_app_bar"
             app:navigationIcon="@drawable/arrow_back"
             app:navigationIconTint="@color/white"
             app:layout_collapseMode="pin"/>
@@ -161,10 +161,13 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/motherCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -248,10 +251,13 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/ramCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -260,7 +266,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/addRam"
+                        android:id="@+id/addRAM"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
@@ -426,10 +432,13 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/storageCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -513,10 +522,13 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/psuCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -600,10 +612,13 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/coolingCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -687,10 +702,13 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/caseCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:backgroundTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="4dp">
 
                 <LinearLayout

@@ -51,6 +51,8 @@ dependencies {
     implementation ("org.jsoup:jsoup:1.15.3")
     implementation ("com.google.android.material:material:1.11.0")
     implementation ("com.squareup.picasso:picasso:2.8")
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1")
+
     //implementation (libs.cardview.v7)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)

@@ -30,7 +30,7 @@
     <string name="build_title">Build</string>
     <string name="favorite_bar">Favorite</string>
     <string name="search_bar">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="label_empty_all">Fill in all fields!</string>
     <string name="greeting_home">Welcome!</string>
@@ -50,11 +50,37 @@
     <string name="settings_about_body">With love from BybLik🖤</string>
     <string name="me">Designer and Developer:\n Kirill Rykhlov\n Contact with me: rihlov.kirill@gmail.com</string>
     <string name="fab_add">Add Build</string>
-    <string name="ruble" translatable="false">₽</string>
+    <string name="ruble" translatable="false">" ₽"</string>
     <string name="empty_cpu">Empty CPU</string>
     <string name="empty_gpu">Empty GPU</string>
     <string name="dialog_add">Create</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_title">Create new Build</string>
     <string name="dialog_edittext">Enter a name.</string>
+    <string name="empty_ram">Empty RAM</string>
+    <string name="empty_psu">Empty Power Supply</string>
+    <string name="empty_case">Empty Case</string>
+    <string name="empty_storage">Empty Storage</string>
+    <string name="empty_motherboard">Empty Mother Board</string>
+    <string name="empty_cooling">Empty CPU Cooler</string>
+    <string name="add_gpu">Add GPU</string>
+    <string name="add_ram">Add RAM</string>
+    <string name="add_case">Add Case</string>
+    <string name="add_storage">Add Storage</string>
+    <string name="add_motherboard">Add Motherboard</string>
+    <string name="add_cooling">Add Cooling</string>
+    <string name="cpu">CPU</string>
+    <string name="gpu">GPU</string>
+    <string name="fab_upd">Add to Build</string>
+    <string name="cores_threads">"Cores / Threads: "</string>
+    <string name="clock">"Clock Speed: "</string>
+    <string name="vram_size">"VRAM Size: "</string>
+    <string name="chipset">"Chipset: "</string>
+    <string name="form_factor">"Form Factor: "</string>
+    <string name="total_size">Total Size:</string>
+    <string name="ram">RAM</string>
+    <string name="storage">Storage</string>
+    <string name="motherboard">Motherboard</string>
+    <string name="psu">Power Supply</string>
+    <string name="socket">"Socket: "</string>
 </resources>

@@ -120,6 +120,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lessonText;
     }
 
+    public String getLessonVideo(String lessonNumber){
+        String lessonLink = null;
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery("SELECT * FROM study_lessons WHERE LessonNumber = ?", new String[]{lessonNumber});
+            if (cursor != null) {
+                while (cursor.moveToNext()) {
+                    lessonLink = cursor.getString(cursor.getColumnIndex("link"));
+                    Log.d("да", lessonLink);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
+        return lessonLink;
+    }
+
     public List<Lessons> getAllLessons() {
         List<Lessons> lessons = new ArrayList<>();
         Cursor cursor = null;

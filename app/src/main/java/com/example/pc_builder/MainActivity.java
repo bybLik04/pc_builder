@@ -32,8 +32,13 @@ public class MainActivity extends AppCompatActivity {
         binding.topAppBar.setNavigationOnClickListener( v ->{
             binding.drawerLayout.openDrawer(GravityCompat.START);
         });
-
-        setNewFragment(new HomeFragment());
+        String intentType = getIntent().getStringExtra("INTENT");
+        if (intentType != null && intentType.equals("back")) {
+            setNewFragment(new BuildFragment());
+            setAppBarTitle(getString(R.string.build_title));
+        } else {
+            setNewFragment(new HomeFragment());
+        }
 
         binding.navView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.home_item) {

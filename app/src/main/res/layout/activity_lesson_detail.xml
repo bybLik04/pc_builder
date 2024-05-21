@@ -40,6 +40,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white">
                 </WebView>
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtubePlayerView"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/lessonNext"

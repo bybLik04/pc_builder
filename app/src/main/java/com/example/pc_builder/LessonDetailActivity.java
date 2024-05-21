@@ -1,14 +1,20 @@
 package com.example.pc_builder;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebViewClient;
 import android.view.View;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pc_builder.databinding.ActivityLessonDetailBinding;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.List;
 
@@ -33,6 +39,7 @@ public class LessonDetailActivity extends AppCompatActivity {
 
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         String lessonText = dbHelper.getLessonDetails(lessonNumber);
+        String lessonLink = dbHelper.getLessonVideo(lessonNumber);
         mLessons = dbHelper.getAllLessons();
         dbHelper.close();
 
@@ -42,6 +49,11 @@ public class LessonDetailActivity extends AppCompatActivity {
                 mCurrentLessonIndex = i;
                 break;
             }
+        }
+
+        if (lessonLink != null) {
+            configureYouTubePlayer(lessonLink);
+            Log.d("link", lessonLink);
         }
 
         // Загрузка текста урока в WebView
@@ -65,10 +77,38 @@ public class LessonDetailActivity extends AppCompatActivity {
         });
     }
 
+    private void configureYouTubePlayer(String videoId) {
+        YouTubePlayerView youTubePlayerView = binding.youtubePlayerView;
+        getLifecycle().addObserver(youTubePlayerView);
+        youTubePlayerView.setVisibility(View.VISIBLE);
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(YouTubePlayer youTubePlayer) {
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
+        // Show the YouTubePlayerView after WebView content is loaded
+        binding.lessonWebView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onPageFinished(android.webkit.WebView view, String url) {
+                youTubePlayerView.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
     private void loadLesson(String lessonNumber) {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         String lessonText = dbHelper.getLessonDetails(lessonNumber);
+
         dbHelper.close();
+
+
         binding.lessonWebView.loadDataWithBaseURL("file:///android_asset/", lessonText, "text/html; charset=utf-8", "utf-8", null);
         binding.lessonWebView.setWebViewClient(new WebViewClient());
     }
@@ -94,4 +134,6 @@ public class LessonDetailActivity extends AppCompatActivity {
             binding.lessonNext.setVisibility(View.VISIBLE);
         }
     }
+
+
 }

@@ -4,6 +4,9 @@ package com.example.pc_builder;
 
 import static android.app.PendingIntent.getActivity;
 
+import static com.example.pc_builder.BuildFragment.REQUEST_CODE_BUILD_INF;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -56,22 +59,12 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
         if (build.getCpu() == null) {
             holder.cpu.setText(R.string.empty_cpu);
         } else {
-            loadPartsFromFirestore(build.getCpu(), new OnPartLoadedListener() {
-                @Override
-                public void onPartLoaded(String partName) {
-                    holder.cpu.setText(partName);
-                }
-            });
+            loadPartsFromFirestore(build.getCpu(), partName -> holder.cpu.setText(partName));
         }
         if (build.getGpu() == null) {
             holder.cpu.setText(R.string.empty_cpu);
         } else {
-            loadPartsFromFirestore(build.getGpu(), new OnPartLoadedListener() {
-                @Override
-                public void onPartLoaded(String partName) {
-                    holder.gpu.setText(partName);
-                }
-            });
+            loadPartsFromFirestore(build.getGpu(), partName -> holder.gpu.setText(partName));
         }
 
         holder.card.setOnClickListener(view -> {
@@ -79,8 +72,10 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
                 Builds clickedBuilds = builds.get(position);
                 Intent intent = new Intent(mContext, BuildInfActivity.class);
                 intent.putExtra("TITLE", clickedBuilds.getTitle());
-                //intent.putExtra("LESSON_LIST", )
-                mContext.startActivity(intent);
+
+                if (mContext instanceof Activity) {
+                    ((Activity) mContext).startActivityForResult(intent, REQUEST_CODE_BUILD_INF);
+                }
             }
         });
     }
