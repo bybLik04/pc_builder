@@ -83,4 +83,6 @@
     <string name="motherboard">Motherboard</string>
     <string name="psu">Power Supply</string>
     <string name="socket">"Socket: "</string>
+    <string name="add_psu">Add PSU</string>
+    <string name="add_cpu">Add CPU</string>
 </resources>

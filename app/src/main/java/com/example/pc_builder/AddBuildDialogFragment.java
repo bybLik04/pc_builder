@@ -47,13 +47,13 @@ public class AddBuildDialogFragment extends DialogFragment {
             Log.d("NAMETITLE", title);
             if (mListener != null) {
                 if (title.isEmpty()) {
-                    mListener.onBuildCreated(title,"Введите название!!!");
+                    mListener.onBuildCreated(title,"Введите название!");
                 } else {
                     Map<String, Object> newBuild = new HashMap<>();
                     newBuild.put("CPU", null);
                     newBuild.put("GPU", null);
                     newBuild.put("Cost", 0);
-                    newBuild.put("Case", null);
+                    newBuild.put("Cases", null);
                     newBuild.put("Motherboard", null);
                     newBuild.put("RAM", null);
                     newBuild.put("Storage", null);
@@ -64,11 +64,11 @@ public class AddBuildDialogFragment extends DialogFragment {
                             .document(title)
                             .set(newBuild).addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    mListener.onBuildCreated(title,"Успех");
+                                    mListener.onBuildCreated(title,"Сборка создана успешно!");
                                 }
                             })
                             .addOnFailureListener(e -> {
-                                mListener.onBuildCreated(title,"Провал");
+                                mListener.onBuildCreated(title,"Проблема при создании сборки");
                             });
                 }
             }

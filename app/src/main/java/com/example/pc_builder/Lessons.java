@@ -8,7 +8,7 @@ public class Lessons {
     private String mMark;
     private int mChecked;
 
-    public Lessons(int id, String mLessonNumber, String mTitle, String image, String mMark, int mChecked) {
+    public Lessons(int id, String mLessonNumber, String mTitle, String image) {
         this.id = id;
         this.mLessonNumber = mLessonNumber;
         this.mTitle = mTitle;

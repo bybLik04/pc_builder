@@ -20,11 +20,8 @@ import java.util.List;
 
 public class LessonDetailActivity extends AppCompatActivity {
     private ActivityLessonDetailBinding binding;
-    private String currentLessonNumber;
-    private int totalLessons;
     private List<Lessons> mLessons;
     private int mCurrentLessonIndex;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +37,7 @@ public class LessonDetailActivity extends AppCompatActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         String lessonText = dbHelper.getLessonDetails(lessonNumber);
         String lessonLink = dbHelper.getLessonVideo(lessonNumber);
+        boolean hasTest = dbHelper.hasTest(lessonNumber);
         mLessons = dbHelper.getAllLessons();
         dbHelper.close();
 
@@ -75,8 +73,18 @@ public class LessonDetailActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
 
+        if (hasTest) {
+            binding.lessonTest.setVisibility(View.VISIBLE);
+            binding.lessonTest.setOnClickListener(v -> {
+                Intent intent = new Intent(this, TestActivity.class);
+                intent.putExtra("LESSON_NUMBER", lessonNumber);
+                startActivity(intent);
+            });
+        } else {
+            binding.lessonTest.setVisibility(View.GONE);
+        }
+    }
     private void configureYouTubePlayer(String videoId) {
         YouTubePlayerView youTubePlayerView = binding.youtubePlayerView;
         getLifecycle().addObserver(youTubePlayerView);
@@ -96,44 +104,8 @@ public class LessonDetailActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onStop() {
         super.onStop();
     }
-
-    private void loadLesson(String lessonNumber) {
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        String lessonText = dbHelper.getLessonDetails(lessonNumber);
-
-        dbHelper.close();
-
-
-        binding.lessonWebView.loadDataWithBaseURL("file:///android_asset/", lessonText, "text/html; charset=utf-8", "utf-8", null);
-        binding.lessonWebView.setWebViewClient(new WebViewClient());
-    }
-
-    private String getNextLesson() {
-        DatabaseHelper dbHelper = new DatabaseHelper(this);
-        String nextLessonText = dbHelper.getNextLesson(currentLessonNumber);
-        dbHelper.close();
-        return nextLessonText;
-    }
-
-    private String getNextLessonNumber(String currentLessonNumber) {
-        // Extract the numeric part from the lesson number and increment it
-        int currentNumber = Integer.parseInt(currentLessonNumber.replaceAll("\\D+", ""));
-        int nextNumber = currentNumber + 1;
-        return "Урок " + nextNumber;
-    }
-
-    private void updateNextButtonVisibility() {
-        if (currentLessonNumber.contains("Введение") || Integer.parseInt(currentLessonNumber.replaceAll("\\D+", "")) >= totalLessons) {
-            binding.lessonNext.setVisibility(View.GONE);
-        } else {
-            binding.lessonNext.setVisibility(View.VISIBLE);
-        }
-    }
-
-
 }

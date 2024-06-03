@@ -103,7 +103,7 @@ public class BuildInfActivity extends AppCompatActivity {
         binding.buildName.setText(builds.getTitle());
 
         if (builds.getCpu() == null) {
-            binding.addCPU.setText("Add CPU");
+            binding.addCPU.setText(R.string.add_cpu);
             binding.cpuName.setText(R.string.empty_cpu);
             binding.cpuImage.setImageResource(R.drawable.add_30dp);
             binding.cpuPrice.setVisibility(View.GONE);
@@ -137,7 +137,7 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getRam());
         }
         if (builds.getPsu() == null) {
-            binding.addPSU.setText("Add PSU");
+            binding.addPSU.setText(R.string.add_psu);
             binding.psuName.setText(R.string.empty_psu);
             binding.psuImage.setImageResource(R.drawable.add_30dp);
             binding.psuPrice.setVisibility(View.GONE);
@@ -147,7 +147,7 @@ public class BuildInfActivity extends AppCompatActivity {
         } else {
             loadPartsFromFirestore(builds.getPsu());
         }
-        if (builds.getCase() == null) {
+        if (builds.getCases() == null) {
             binding.addCase.setText(R.string.add_case);
             binding.caseName.setText(R.string.empty_case);
             binding.caseImage.setImageResource(R.drawable.add_30dp);
@@ -156,7 +156,7 @@ public class BuildInfActivity extends AppCompatActivity {
             binding.caseInf2.setVisibility(View.GONE);
             initButtons(binding.caseCard, partRef, AddPartActivity.class, "Cases");
         } else {
-            loadPartsFromFirestore(builds.getCase());
+            loadPartsFromFirestore(builds.getCases());
         }
         if (builds.getStorage() == null) {
             binding.addStorage.setText(R.string.add_storage);
@@ -308,7 +308,7 @@ public class BuildInfActivity extends AppCompatActivity {
             binding.caseInf1.setVisibility(View.VISIBLE);
             binding.caseInf2.setText("Совместимость: " + String.valueOf(partData.get("maxform")));
             binding.caseInf2.setVisibility(View.VISIBLE);
-            initButtons(binding.caseCard, partRef, PartInfActivity.class, "Case");
+            initButtons(binding.caseCard, partRef, PartInfActivity.class, "Cases");
         }
         if (partRef.contains("Cooling")) {
             binding.addCooling.setText("Кулер");

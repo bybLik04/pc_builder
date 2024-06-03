@@ -52,8 +52,8 @@ public class LessonsPickAdapter extends RecyclerView.Adapter<LessonsPickAdapter.
         public void bind(Lessons lessons) {
             binding.lessonNumberText.setText(lessons.getLessonNumber());
             binding.lessonTitleText.setText("Тема урока: " + lessons.getTitle());
-
-            if (lessons.getTitle().contains("Введение")) {
+            
+            if (lessons.getTitle().contains("Введение") || lessons.getTitle().contains("Общее устройство компьютера")) {
                 binding.lessonMarkText.setVisibility(android.view.View.GONE);
             } else {
                 if (lessons.getMark() == null) {

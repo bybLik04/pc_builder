@@ -46,15 +46,31 @@
                     android:layout_height="200dp"
                     android:layout_marginTop="8dp"
                     android:layout_gravity="center"
-                    android:visibility="gone" />
-
-                <Button
-                    android:id="@+id/lessonNext"
-                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:layout_marginBottom="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="8pt"
-                    android:layout_gravity="end"
-                    android:text="Дальше" />
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="end">
+                    <Button
+                        android:id="@+id/lessonTest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="8pt"
+                        android:layout_gravity="start"
+                        android:text="Пройти тестирование"
+                        android:visibility="visible" />
+                    <Button
+                        android:id="@+id/lessonNext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="8pt"
+                        android:layout_gravity="end"
+                        android:text="Дальше" />
+                </LinearLayout>
+
             </LinearLayout>
         </ScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

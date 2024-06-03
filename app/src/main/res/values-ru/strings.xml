@@ -79,4 +79,6 @@
     <string name="motherboard">Материнская плата</string>
     <string name="psu">Блок питания</string>
     <string name="socket">"Сокет: "</string>
+    <string name="add_psu">Добавить блок питания</string>
+    <string name="add_cpu">Добавить процессор</string>
 </resources>

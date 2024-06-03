@@ -11,13 +11,13 @@ public class Builds {
     private DocumentReference PSU;
     private DocumentReference RAM;
     private DocumentReference Storage;
-    private DocumentReference Case;
+    private DocumentReference Cases;
     private DocumentReference Cooling;
 
     public Builds(){
 
     }
-    public Builds(int cost, DocumentReference cpu, DocumentReference gpu, DocumentReference motherboard, DocumentReference psu, DocumentReference ram, DocumentReference storage, DocumentReference casee, DocumentReference cooling){
+    public Builds(int cost, DocumentReference cpu, DocumentReference gpu, DocumentReference motherboard, DocumentReference psu, DocumentReference ram, DocumentReference storage, DocumentReference cases, DocumentReference cooling){
         this.Cost = cost;
         this.CPU = cpu;
         this.GPU = gpu;
@@ -25,7 +25,7 @@ public class Builds {
         this.PSU = psu;
         this.RAM = ram;
         this.Storage = storage;
-        this.Case = casee;
+        this.Cases = cases;
         this.Cooling = cooling;
     }
 
@@ -57,8 +57,8 @@ public class Builds {
     public DocumentReference getStorage() {
         return Storage;
     }
-    public DocumentReference getCase() {
-        return Case;
+    public DocumentReference getCases() {
+        return Cases;
     }
     public DocumentReference getCooling() {
         return Cooling;

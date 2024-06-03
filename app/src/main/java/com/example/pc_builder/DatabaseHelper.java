@@ -152,11 +152,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     int id = cursor.getInt(cursor.getColumnIndex("id"));
                     String lessonNumber = cursor.getString(cursor.getColumnIndex("LessonNumber"));
                     String title = cursor.getString(cursor.getColumnIndex("Title"));
-                    String image = cursor.getString(cursor.getColumnIndex("Image"));
-                    String mark = cursor.getString(cursor.getColumnIndex("Mark"));
-                    int checked = cursor.getInt(cursor.getColumnIndex("Cheked"));
-
-                    Lessons lesson = new Lessons(id, lessonNumber, title, image, mark, checked);
+                    String image = cursor.getString(cursor.getColumnIndex("image"));
+                    Lessons lesson = new Lessons(id, lessonNumber, title, image);
                     lessons.add(lesson);
                 }
             }
@@ -168,6 +165,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return lessons;
+    }
+    public boolean hasTest(String lessonNumber) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT 1 FROM study_tests WHERE LessonNumber = ?", new String[]{lessonNumber});
+        boolean hasTest = cursor.getCount() > 0;
+        cursor.close();
+        return hasTest;
+    }
+    public List<Question> getQuestionsForLesson(String lessonNumber) {
+        List<Question> questionList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM study_questions WHERE TestID IN (SELECT id FROM study_tests WHERE LessonNumber = ?)", new String[]{lessonNumber});
+        if (cursor.moveToFirst()) {
+            do {
+                String questionType = cursor.getString(cursor.getColumnIndex("QuestionType"));
+                String questionText = cursor.getString(cursor.getColumnIndex("Question"));
+                String option1 = cursor.getString(cursor.getColumnIndex("Option1"));
+                String option2 = cursor.getString(cursor.getColumnIndex("Option2"));
+                String option3 = cursor.getString(cursor.getColumnIndex("Option3"));
+                String option4 = cursor.getString(cursor.getColumnIndex("Option4"));
+                String correctAnswer = cursor.getString(cursor.getColumnIndex("CorrectAnswer"));
+                Question question = new Question(questionType, questionText, option1, option2, option3, option4, correctAnswer);
+                questionList.add(question);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return questionList;
     }
 
     private void logCursorInfo(Cursor cursor) {
