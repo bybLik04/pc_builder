@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
     <item
         android:id="@+id/search_bar"
         android:icon="@drawable/search_ico"
@@ -14,7 +16,8 @@
         android:id="@+id/settings_item"
         android:icon="@drawable/settings_ico"
         android:title="@string/search_bar"
-        app:showAsAction="ifRoom|collapseActionView"/>
+        app:showAsAction="ifRoom|collapseActionView"
+        android:visible="false"/>
     <!--app:actionLayout="@layout/search_view_layout"
     app:showAsAction="ifRoom|collapseActionView" -->
     <item

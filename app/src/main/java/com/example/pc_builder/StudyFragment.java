@@ -16,13 +16,6 @@ public class StudyFragment extends Fragment {
     private FragmentStudyBinding binding;
 
     public StudyFragment() {
-        // Required empty public constructor
-    }
-    public static StudyFragment newInstance(String param1, String param2) {
-        StudyFragment fragment = new StudyFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -38,9 +31,21 @@ public class StudyFragment extends Fragment {
 
         binding.part1Card.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), LessonsPickActivity.class);
+            intent.putExtra("PART", 1);
             startActivity(intent);
         });
 
+        binding.part2Card.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), LessonsPickActivity.class);
+            intent.putExtra("PART", 2);
+            startActivity(intent);
+        });
+
+        binding.part3Card.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), TestActivity.class);
+            intent.putExtra("LESSON_NUMBER", "ИТОГОВЫЙ");
+            startActivity(intent);
+        });
         return view;
     }
 }

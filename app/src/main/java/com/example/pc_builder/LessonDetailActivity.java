@@ -22,6 +22,10 @@ public class LessonDetailActivity extends AppCompatActivity {
     private ActivityLessonDetailBinding binding;
     private List<Lessons> mLessons;
     private int mCurrentLessonIndex;
+    private String query;
+    private boolean hasTest;
+    private String lessonText;
+    private String lessonLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +37,22 @@ public class LessonDetailActivity extends AppCompatActivity {
         });
 
         String lessonNumber = getIntent().getStringExtra("LESSON_NUMBER");
+        int part = getIntent().getIntExtra("LESSON_TYPE", 1);
 
         DatabaseHelper dbHelper = new DatabaseHelper(this);
-        String lessonText = dbHelper.getLessonDetails(lessonNumber);
-        String lessonLink = dbHelper.getLessonVideo(lessonNumber);
-        boolean hasTest = dbHelper.hasTest(lessonNumber);
-        mLessons = dbHelper.getAllLessons();
+
+        if (part == 1) {
+            query = "study_titles";
+            lessonText = dbHelper.getLessonDetails(lessonNumber, "study_lessons");
+            lessonLink = dbHelper.getLessonVideo(lessonNumber, "study_lessons");
+            hasTest = dbHelper.hasTest(lessonNumber);
+        } else if (part == 2) {
+            query = "build_titles";
+            lessonText = dbHelper.getLessonDetails(lessonNumber, "build_lessons");
+            lessonLink = dbHelper.getLessonVideo(lessonNumber, "build_lessons");
+            hasTest = false;
+        }
+        mLessons = dbHelper.getAllLessons(query);
         dbHelper.close();
 
         // Находим индекс текущего урока

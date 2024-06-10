@@ -12,15 +12,18 @@ import com.example.pc_builder.databinding.LessonsPickViewBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LessonsPickAdapter extends RecyclerView.Adapter<LessonsPickAdapter.ViewHolder> {
 
     private List<Lessons> mLessons;
     private Context mContext;
+    private int mPart;
 
-    public LessonsPickAdapter(List<Lessons> lessons, Context context) {
+    public LessonsPickAdapter(List<Lessons> lessons, Context context, int part) {
         this.mLessons = lessons;
         this.mContext = context;
+        this.mPart = part;
     }
 
     @NonNull
@@ -50,23 +53,23 @@ public class LessonsPickAdapter extends RecyclerView.Adapter<LessonsPickAdapter.
         }
 
         public void bind(Lessons lessons) {
+            binding.lessonCheckedText.setVisibility(android.view.View.GONE);
+            binding.lessonCard.setVisibility(android.view.View.VISIBLE);
             binding.lessonNumberText.setText(lessons.getLessonNumber());
             binding.lessonTitleText.setText("Тема урока: " + lessons.getTitle());
-            
+
             if (lessons.getTitle().contains("Введение") || lessons.getTitle().contains("Общее устройство компьютера")) {
                 binding.lessonMarkText.setVisibility(android.view.View.GONE);
             } else {
-                if (lessons.getMark() == null) {
+                DatabaseHelper databaseHelper = new DatabaseHelper(mContext);
+                Map<String, Object> result = databaseHelper.getTestScore(lessons.getLessonNumber());
+                int mark = (int) result.get("Score");
+                if (mark == 0 || mark == -1 ) {
                     binding.lessonMarkText.setText("Оценка: еще не пройдено");
                 } else {
-                    binding.lessonMarkText.setText("Оценка: " + lessons.getMark());
-                }
-            }
 
-            if (lessons.getChecked() == 0) {
-                binding.lessonCheckedText.setVisibility(android.view.View.GONE);
-            } else {
-                binding.lessonCheckedText.setVisibility(android.view.View.VISIBLE);
+                    binding.lessonMarkText.setText("Оценка: " + mark);
+                }
             }
 
             if (!lessons.getImage().isEmpty()) {
@@ -82,10 +85,14 @@ public class LessonsPickAdapter extends RecyclerView.Adapter<LessonsPickAdapter.
                     Lessons clickedLessons = mLessons.get(position);
                     Intent intent = new Intent(mContext, LessonDetailActivity.class);
                     intent.putExtra("LESSON_NUMBER", clickedLessons.getLessonNumber());
-                    //intent.putExtra("LESSON_LIST", )
+                    intent.putExtra("LESSON_TYPE", mPart);
                     mContext.startActivity(intent);
                 }
             });
+
+            if (lessons.getTitle().equals("ИТОГОВЫЙ")){
+                binding.lessonCard.setVisibility(android.view.View.GONE);
+            }
         }
     }
 }

@@ -36,7 +36,7 @@
     <string name="greeting_home">Welcome!</string>
     <string name="part1_title">Part 1: Basic Computer Components</string>
     <string name="part2_title">Part 2: Computer Assembly</string>
-    <string name="part3_title">Knowledge testing</string>
+    <string name="part3_title">Final testing</string>
     <string name="titlehome_2">What are we going to do?</string>
     <string name="continue_studies">Shall we continue our studies?</string>
     <string name="testbody_card" translatable="false">Текущая тема: Микропроцессоры</string>
@@ -85,4 +85,6 @@
     <string name="socket">"Socket: "</string>
     <string name="add_psu">Add PSU</string>
     <string name="add_cpu">Add CPU</string>
+    <string name="build_name">Build Name</string>
+    <string name="total_price">Total Price</string>
 </resources>

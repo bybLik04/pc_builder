@@ -7,9 +7,9 @@ public class Question {
     private String option2;
     private String option3;
     private String option4;
-    private String answer;
+    private String[] answer;
 
-    public Question(String type, String question, String option1, String option2, String option3, String option4, String answer) {
+    public Question(String type, String question, String option1, String option2, String option3, String option4, String[] answer) {
         this.questionType = type;
         this.question = question;
         this.option1 = option1;
@@ -37,7 +37,7 @@ public class Question {
     public String getOption4() {
         return option4;
     }
-    public String getAnswer() {
+    public String[] getAnswer() {
         return answer;
     }
 
@@ -60,7 +60,7 @@ public class Question {
     public void setOption4(String option4) {
         this.option4 = option4;
     }
-    public void setAnswer(String answer) {
+    public void setAnswer(String[] answer) {
         this.answer = answer;
     }
 }

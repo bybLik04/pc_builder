@@ -35,6 +35,10 @@ public class PartInfActivity extends AppCompatActivity {
         binding = ActivityPartInfBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.partInfAppBar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
         
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();

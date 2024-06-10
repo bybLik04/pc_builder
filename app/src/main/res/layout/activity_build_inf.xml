@@ -2,11 +2,9 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BuildInfActivity"
-    android:background="@color/white">
+    tools:context=".BuildInfActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -45,7 +43,7 @@
                 android:layout_marginStart="15dp"
 
                 android:layout_marginTop="15dp"
-                android:text="Build Name"
+                android:text="@string/build_name"
                 android:textStyle="bold" />
 
             <TextView
@@ -62,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
-                android:text="Total Price"
+                android:text="@string/total_price"
                 android:textStyle="bold" />
 
             <TextView
@@ -74,6 +72,16 @@
 
                 android:textSize="@dimen/titleText" />
 
+            <TextView
+                android:id="@+id/emptyParts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Сборка не полная!"
+                android:textSize="10pt"
+                android:textColor="@color/red"/>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cpuCard"
                 android:layout_width="match_parent"
@@ -81,7 +89,7 @@
                 android:layout_margin="10dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -165,7 +173,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="4dp">
@@ -245,7 +253,6 @@
                                 android:textSize="6pt"
                                 android:visibility="gone" />
                         </LinearLayout>
-
                     </LinearLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -255,7 +262,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="4dp">
@@ -348,7 +355,7 @@
                 android:layout_margin="10dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 app:cardElevation="4dp">
 
                 <LinearLayout
@@ -436,7 +443,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="4dp">
@@ -526,7 +533,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="4dp">
@@ -616,7 +623,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="4dp">
@@ -706,7 +713,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:backgroundTint="@color/white"
+                app:cardBackgroundColor="@color/white"
                 android:clickable="true"
                 android:focusable="true"
                 app:cardElevation="4dp">

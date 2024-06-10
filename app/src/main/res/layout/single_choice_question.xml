@@ -8,7 +8,8 @@
         android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question" />
+        android:text="Question"
+        android:textSize="7pt"/>
 
     <RadioGroup
         android:id="@+id/options_group"

@@ -13,7 +13,9 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -80,30 +82,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public String getNextLesson(String currentLessonNumber) {
+    public String getLessonDetails(String lessonNumber, String query) {
         String lessonText = null;
         Cursor cursor = null;
         try {
-            cursor = db.rawQuery("SELECT * FROM study_lessons WHERE LessonNumber > ? ORDER BY LessonNumber ASC LIMIT 1", new String[]{currentLessonNumber});
-            if (cursor != null && cursor.moveToFirst()) {
-                lessonText = cursor.getString(cursor.getColumnIndex("LessonText"));
-                Log.d(TAG, lessonText);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-        return lessonText;
-    }
-
-    public String getLessonDetails(String lessonNumber){
-        String lessonText = null;
-        Cursor cursor = null;
-        try {
-            cursor = db.rawQuery("SELECT * FROM study_lessons WHERE LessonNumber = ?", new String[]{lessonNumber});
+            cursor = db.rawQuery("SELECT * FROM " + query + " WHERE LessonNumber = ?", new String[]{lessonNumber});
             if (cursor != null) {
                 while (cursor.moveToNext()) {
                     lessonText = cursor.getString(cursor.getColumnIndex("LessonText"));
@@ -120,11 +103,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lessonText;
     }
 
-    public String getLessonVideo(String lessonNumber){
+    public String getLessonVideo(String lessonNumber, String query) {
         String lessonLink = null;
         Cursor cursor = null;
         try {
-            cursor = db.rawQuery("SELECT * FROM study_lessons WHERE LessonNumber = ?", new String[]{lessonNumber});
+            cursor = db.rawQuery("SELECT * FROM " + query + " WHERE LessonNumber = ?", new String[]{lessonNumber});
             if (cursor != null) {
                 while (cursor.moveToNext()) {
                     lessonLink = cursor.getString(cursor.getColumnIndex("link"));
@@ -141,11 +124,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return lessonLink;
     }
 
-    public List<Lessons> getAllLessons() {
+    public List<Lessons> getAllLessons(String query) {
         List<Lessons> lessons = new ArrayList<>();
         Cursor cursor = null;
         try {
-            cursor = db.rawQuery("SELECT * FROM study_titles", null);
+            cursor = db.rawQuery("SELECT * FROM " + query, null);
             if (cursor != null) {
                 logCursorInfo(cursor);
                 while (cursor.moveToNext()) {
@@ -166,6 +149,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return lessons;
     }
+    public void saveTestResult(String lessonNumber, int score) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM study_tests WHERE LessonNumber = ?", new String[]{lessonNumber});
+        if (cursor.moveToFirst()) {
+            int testId = cursor.getInt(cursor.getColumnIndex("id"));
+            db.execSQL("UPDATE study_tests SET Score = ? WHERE id = ?", new Object[]{score, testId});
+        } else {
+            db.execSQL("INSERT INTO study_tests (LessonNumber, TestTitle, Score) VALUES (?, ?, ?)",
+                    new Object[]{lessonNumber, "Test Title Placeholder", score});
+        }
+        cursor.close();
+    }
+
     public boolean hasTest(String lessonNumber) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT 1 FROM study_tests WHERE LessonNumber = ?", new String[]{lessonNumber});
@@ -173,6 +170,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return hasTest;
     }
+
+    public Map<String, Object> getTestScore(String lessonNumber) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM study_tests WHERE LessonNumber = ?", new String[]{lessonNumber});
+        int score = -1;
+        String testTitle = "";
+        Map<String, Object> result = new HashMap<>();
+        if (cursor.moveToFirst()) {
+            testTitle = cursor.getString(cursor.getColumnIndex("TestTitle"));
+            score = cursor.getInt(cursor.getColumnIndex("Score"));
+        }
+        result.put("TestTitle", testTitle);
+        result.put("Score", score);
+        cursor.close();
+        return result;
+    }
+
     public List<Question> getQuestionsForLesson(String lessonNumber) {
         List<Question> questionList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -185,7 +199,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String option2 = cursor.getString(cursor.getColumnIndex("Option2"));
                 String option3 = cursor.getString(cursor.getColumnIndex("Option3"));
                 String option4 = cursor.getString(cursor.getColumnIndex("Option4"));
-                String correctAnswer = cursor.getString(cursor.getColumnIndex("CorrectAnswer"));
+                String[] correctAnswer = cursor.getString(cursor.getColumnIndex("CorrectAnswer")).split(",");
                 Question question = new Question(questionType, questionText, option1, option2, option3, option4, correctAnswer);
                 questionList.add(question);
             } while (cursor.moveToNext());

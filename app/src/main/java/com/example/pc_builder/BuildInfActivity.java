@@ -2,6 +2,7 @@ package com.example.pc_builder;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,11 +40,11 @@ public class BuildInfActivity extends AppCompatActivity {
     private ActivityBuildInfBinding binding;
     private String docId;
     private String partRef;
-    private String partType;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private Builds builds;
     private int totalPrice = 0;
+    private boolean incomplete = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,11 @@ public class BuildInfActivity extends AppCompatActivity {
         binding = ActivityBuildInfBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.buildInfAppBar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
         auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
@@ -63,7 +69,6 @@ public class BuildInfActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("INTENT", "back");
             startActivity(intent);
-
             finish();
         });
     }
@@ -103,9 +108,11 @@ public class BuildInfActivity extends AppCompatActivity {
         binding.buildName.setText(builds.getTitle());
 
         if (builds.getCpu() == null) {
+            incomplete = true;
             binding.addCPU.setText(R.string.add_cpu);
             binding.cpuName.setText(R.string.empty_cpu);
             binding.cpuImage.setImageResource(R.drawable.add_30dp);
+            binding.cpuCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.cpuPrice.setVisibility(View.GONE);
             binding.cpuInf1.setVisibility(View.GONE);
             binding.cpuInf2.setVisibility(View.GONE);
@@ -115,9 +122,11 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getCpu());
         }
         if (builds.getGpu() == null) {
+            incomplete = true;
             binding.addGPU.setText(R.string.add_gpu);
             binding.gpuName.setText(R.string.empty_gpu);
             binding.gpuImage.setImageResource(R.drawable.add_30dp);
+            binding.gpuCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.gpuPrice.setVisibility(View.GONE);
             binding.gpuInf1.setVisibility(View.GONE);
             binding.gpuInf2.setVisibility(View.GONE);
@@ -126,9 +135,11 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getGpu());
         }
         if (builds.getRam() == null) {
+            incomplete = true;
             binding.addRAM.setText(R.string.add_ram);
             binding.ramName.setText(R.string.empty_ram);
             binding.ramImage.setImageResource(R.drawable.add_30dp);
+            binding.ramCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.ramPrice.setVisibility(View.GONE);
             binding.ramInf1.setVisibility(View.GONE);
             binding.ramInf2.setVisibility(View.GONE);
@@ -137,9 +148,11 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getRam());
         }
         if (builds.getPsu() == null) {
+            incomplete = true;
             binding.addPSU.setText(R.string.add_psu);
             binding.psuName.setText(R.string.empty_psu);
             binding.psuImage.setImageResource(R.drawable.add_30dp);
+            binding.psuCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.psuPrice.setVisibility(View.GONE);
             binding.psuInf1.setVisibility(View.GONE);
             binding.psuInf2.setVisibility(View.GONE);
@@ -148,9 +161,11 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getPsu());
         }
         if (builds.getCases() == null) {
+            incomplete = true;
             binding.addCase.setText(R.string.add_case);
             binding.caseName.setText(R.string.empty_case);
             binding.caseImage.setImageResource(R.drawable.add_30dp);
+            binding.caseCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.casePrice.setVisibility(View.GONE);
             binding.caseInf1.setVisibility(View.GONE);
             binding.caseInf2.setVisibility(View.GONE);
@@ -159,9 +174,11 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getCases());
         }
         if (builds.getStorage() == null) {
+            incomplete = true;
             binding.addStorage.setText(R.string.add_storage);
             binding.storageName.setText(R.string.empty_storage);
             binding.storageImage.setImageResource(R.drawable.add_30dp);
+            binding.storageCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.storagePrice.setVisibility(View.GONE);
             binding.storageInf1.setVisibility(View.GONE);
             binding.storageInf2.setVisibility(View.GONE);
@@ -170,9 +187,11 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getStorage());
         }
         if (builds.getMotherboard() == null) {
+            incomplete = true;
             binding.addMotherboard.setText(R.string.add_motherboard);
             binding.motherName.setText(R.string.empty_motherboard);
             binding.motherImage.setImageResource(R.drawable.add_30dp);
+            binding.motherCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.motherPrice.setVisibility(View.GONE);
             binding.motherInf1.setVisibility(View.GONE);
             binding.motherInf2.setVisibility(View.GONE);
@@ -181,15 +200,20 @@ public class BuildInfActivity extends AppCompatActivity {
             loadPartsFromFirestore(builds.getMotherboard());
         }
         if (builds.getCooling() == null) {
+            incomplete = true;
             binding.addCooling.setText(R.string.add_cooling);
             binding.coolingName.setText(R.string.empty_cooling);
             binding.coolingImage.setImageResource(R.drawable.add_30dp);
+            binding.coolingCard.setCardBackgroundColor(getResources().getColor(R.color.red));
             binding.coolingPrice.setVisibility(View.GONE);
             binding.coolingInf1.setVisibility(View.GONE);
             binding.coolingInf2.setVisibility(View.GONE);
             initButtons(binding.coolingCard, partRef, AddPartActivity.class, "Cooling");
         } else {
             loadPartsFromFirestore(builds.getCooling());
+        }
+        if (!incomplete){
+            binding.emptyParts.setVisibility(View.GONE);
         }
     }
 
@@ -353,12 +377,6 @@ public class BuildInfActivity extends AppCompatActivity {
             finish();
         });
     }
-    @Override
-    public void onBackPressed() {
-        // Set the result to indicate the activity is finished
-        setResult(Activity.RESULT_OK);
-        super.onBackPressed();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -371,6 +389,7 @@ public class BuildInfActivity extends AppCompatActivity {
         settingsItem.setVisible(false);
         MenuItem internetItem = menu.findItem(R.id.delete_item);
         internetItem.setVisible(true);
+
         return super.onPrepareOptionsMenu(menu);
     }
 

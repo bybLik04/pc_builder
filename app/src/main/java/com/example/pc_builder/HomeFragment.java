@@ -4,44 +4,27 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.window.layout.WindowMetrics;
-import androidx.window.layout.WindowMetricsCalculator;
 
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
 import com.example.pc_builder.databinding.ActivityMainBinding;
 import com.example.pc_builder.databinding.FragmentHomeBinding;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.MaterialToolbar;
 
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
-    private ActivityMainBinding mainBinding;
-    private MainActivity main;
-
+    private MainActivity mainActivity;
+    private ActivityMainBinding activityMainBinding;
     public HomeFragment() {
-        
     }
-
-    /*public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainBinding = ((MainActivity) getActivity()).getActivityMainBinding();
-        main = new MainActivity();
+        mainActivity = (MainActivity) getActivity();
     }
 
     @Override
@@ -49,8 +32,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        init(view);
-
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
@@ -67,8 +48,8 @@ public class HomeFragment extends Fragment {
         binding.studyHomeButton.setOnClickListener(v -> {
             StudyFragment studyFragment = new StudyFragment();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            mainActivity.setAppBarTitle(getString(R.string.study_title));
 
-            mainBinding.topAppBar.setTitle(R.string.study_title);
             transaction.replace(R.id.frameLayout, studyFragment);
             transaction.addToBackStack(null);
             transaction.commit();
@@ -77,16 +58,12 @@ public class HomeFragment extends Fragment {
         binding.buildHomeButton.setOnClickListener(v -> {
             BuildFragment buildFragment = new BuildFragment();
             FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+            mainActivity.setAppBarTitle(getString(R.string.build_title));
 
             transaction.replace(R.id.frameLayout, buildFragment);
             transaction.addToBackStack(null);
-
             transaction.commit();
         });
         return view;
-    }
-
-    private void init(View view){
-        
     }
 }

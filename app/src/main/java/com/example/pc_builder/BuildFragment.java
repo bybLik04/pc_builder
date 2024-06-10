@@ -32,14 +32,6 @@ public class BuildFragment extends Fragment implements AddBuildDialogFragment.Ad
     private FirebaseAuth auth;
     static final int REQUEST_CODE_BUILD_INF = 1;
 
-
-    public static BuildFragment newInstance(String param1, String param2) {
-        BuildFragment fragment = new BuildFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,17 +70,6 @@ public class BuildFragment extends Fragment implements AddBuildDialogFragment.Ad
     public void onBuildCreated(String buildName, String notificationTitle) {
         loadBuildsFromFirestore();
         Toast.makeText(getActivity(), notificationTitle, Toast.LENGTH_LONG).show();
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_BUILD_INF) {
-            if (resultCode == Activity.RESULT_OK) {
-                // Reload the builds from Firestore
-                loadBuildsFromFirestore();
-                init();
-            }
-        }
     }
 
     private void loadBuildsFromFirestore() {

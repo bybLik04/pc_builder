@@ -34,7 +34,7 @@
     <string name="greeting_home">Добро пожаловать!</string>
     <string name="part1_title">Часть 1: Основные компоненты компьютера</string>
     <string name="part2_title">Часть 2: Сборка компьютера</string>
-    <string name="part3_title">Тестирование знаний</string>
+    <string name="part3_title">Итоговое тестирование</string>
     <string name="titlehome_2">Чем будем заниматься?</string>
     <string name="continue_studies">Продолжим обучение?</string>
     <string name="homebuildcard">Соберем компьютер</string>
@@ -81,4 +81,6 @@
     <string name="socket">"Сокет: "</string>
     <string name="add_psu">Добавить блок питания</string>
     <string name="add_cpu">Добавить процессор</string>
+    <string name="build_name">Название сборки</string>
+    <string name="total_price">Итого</string>
 </resources>
