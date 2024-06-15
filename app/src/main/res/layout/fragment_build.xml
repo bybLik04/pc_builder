@@ -25,5 +25,16 @@
         app:tint="@color/white"
         android:contentDescription="@string/fab_add"/>
 
+    <TextView
+        android:id="@+id/buildsEmptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="У вас пока нет сборок"
+        android:gravity="center"
+        android:visibility="visible"
+        android:textColor="?android:attr/textColorSecondary"/>
+
 
 </FrameLayout>

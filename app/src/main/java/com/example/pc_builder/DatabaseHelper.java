@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         DB_PATH = mContext.getApplicationInfo().dataDir + "/databases/";
 
         try {
-            db = SQLiteDatabase.openDatabase(context.getDatabasePath("pcbuilder.db").getPath(), null, SQLiteDatabase.OPEN_READONLY);
+            db = SQLiteDatabase.openDatabase(context.getDatabasePath("pcbuilder.db").getPath(), null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         } catch (Exception e) {
             e.printStackTrace();
         }

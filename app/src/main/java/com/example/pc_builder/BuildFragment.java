@@ -57,8 +57,9 @@ public class BuildFragment extends Fragment implements AddBuildDialogFragment.Ad
     }
     private void init(){
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+
         binding.rvBuild.setLayoutManager(layoutManager);
-        buildsAdapter = new BuildsAdapter(builds, getActivity(), db, auth);
+        buildsAdapter = new BuildsAdapter(builds, getActivity());
         binding.rvBuild.setAdapter(buildsAdapter);
     }
     private void showAddBuildDialog() {
@@ -85,7 +86,11 @@ public class BuildFragment extends Fragment implements AddBuildDialogFragment.Ad
                         Builds build = document.toObject(Builds.class);
                         build.setTitle(document.getId());
                         builds.add(build);
-                        Log.d("TAG", document.getId() + " => " + document.getData());
+                        if (document.exists()){
+                            binding.buildsEmptyText.setVisibility(View.GONE);
+                        }   else {
+                            binding.buildsEmptyText.setVisibility(View.VISIBLE);
+                        }
                     }
                     buildsAdapter.notifyDataSetChanged();
                 }

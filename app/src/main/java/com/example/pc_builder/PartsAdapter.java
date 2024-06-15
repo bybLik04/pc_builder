@@ -105,18 +105,6 @@ public class PartsAdapter extends RecyclerView.Adapter<PartsAdapter.ViewHolder> 
                 }
             }
         });
-        /*loadPartsFromFirestore(part, new OnPartLoadedListener() {
-            @Override
-            public void onPartLoaded(String partName) {
-                holder.inf1.setText(partName);
-            }
-        });
-        loadPartsFromFirestore(part, new OnPartLoadedListener() {
-            @Override
-            public void onPartLoaded(String partName) {
-                holder.inf2.setText(partName);
-            }
-        });*/
     }
     @Override
     public int getItemCount() {

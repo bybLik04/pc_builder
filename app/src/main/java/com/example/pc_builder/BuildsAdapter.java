@@ -30,13 +30,9 @@ import java.util.concurrent.atomic.AtomicReference;
 public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder> {
 
     private List<Builds> builds;
-    private Context mContext;
-    private FirebaseFirestore db;
-    private FirebaseAuth auth;
+    private final Context mContext;
     private OnPartLoadedListener onPartLoadedListener;
-    public BuildsAdapter(List<Builds> builds, Context Context, FirebaseFirestore db, FirebaseAuth auth) {
-        this.db = db;
-        this.auth = auth;
+    public BuildsAdapter(List<Builds> builds, Context Context) {
         this.builds = builds;
         this.mContext = Context;
     }
@@ -53,7 +49,7 @@ public class BuildsAdapter extends RecyclerView.Adapter<BuildsAdapter.ViewHolder
 
         holder.title.setText(build.getTitle());
 
-        String totalCost = String.valueOf(build.getCost()) + mContext.getString(R.string.ruble);
+        String totalCost = build.getCost() + mContext.getString(R.string.ruble);
         holder.cost.setText(totalCost);
         Log.d("TAG", "TITLE: " + build.getTitle() + " Cpu: " + build.getCpu() + " Gpu: " + build.getGpu() + " Cost: " + build.getCost() + totalCost);
         if (build.getCpu() == null) {
