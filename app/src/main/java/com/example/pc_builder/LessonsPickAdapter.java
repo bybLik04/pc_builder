@@ -19,11 +19,13 @@ public class LessonsPickAdapter extends RecyclerView.Adapter<LessonsPickAdapter.
     private List<Lessons> mLessons;
     private Context mContext;
     private int mPart;
+    private String query;
 
-    public LessonsPickAdapter(List<Lessons> lessons, Context context, int part) {
+    public LessonsPickAdapter(List<Lessons> lessons, Context context, int part, String query) {
         this.mLessons = lessons;
         this.mContext = context;
         this.mPart = part;
+        this.query = query;
     }
 
     @NonNull
@@ -57,7 +59,9 @@ public class LessonsPickAdapter extends RecyclerView.Adapter<LessonsPickAdapter.
             binding.lessonCard.setVisibility(android.view.View.VISIBLE);
             binding.lessonNumberText.setText(lessons.getLessonNumber());
             binding.lessonTitleText.setText("Тема урока: " + lessons.getTitle());
-
+            if (query.equals("build_titles")) {
+                binding.lessonMarkText.setVisibility(android.view.View.GONE);
+            }
             if (lessons.getTitle().contains("Введение") || lessons.getTitle().contains("Общее устройство компьютера")) {
                 binding.lessonMarkText.setVisibility(android.view.View.GONE);
             } else {

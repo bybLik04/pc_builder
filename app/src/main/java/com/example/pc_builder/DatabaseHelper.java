@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.util.Log;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -32,19 +33,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         DB_PATH = mContext.getApplicationInfo().dataDir + "/databases/";
 
         try {
-            db = SQLiteDatabase.openDatabase(context.getDatabasePath("pcbuilder.db").getPath(), null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
+            db = SQLiteDatabase.openDatabase(context.getDatabasePath(DATABASE_NAME).getPath(), null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void createDataBase() throws IOException {
-        this.getReadableDatabase();
-        try {
-            copyDataBase();
-        } catch (IOException e) {
-            throw new Error("Error copying database");
+        boolean dbExist = checkDataBase();
+
+        if (!dbExist) {
+            this.getReadableDatabase();
+            try {
+                copyDataBase();
+                Log.d(TAG, "Database copied");
+            } catch (IOException e) {
+                throw new Error("Error copying database");
+            }
         }
+    }
+
+    private boolean checkDataBase() {
+        File dbFile = new File(DB_PATH + DATABASE_NAME);
+        return dbFile.exists();
     }
 
     private void copyDataBase() throws IOException {
@@ -68,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        // Leave empty as we handle database creation through copying
     }
 
     @Override
@@ -149,6 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return lessons;
     }
+
     public void saveTestResult(String lessonNumber, int score) {
         SQLiteDatabase db = this.getWritableDatabase();
 

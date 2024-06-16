@@ -26,6 +26,7 @@ public class LessonDetailActivity extends AppCompatActivity {
     private boolean hasTest;
     private String lessonText;
     private String lessonLink;
+    private int part;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class LessonDetailActivity extends AppCompatActivity {
         });
 
         String lessonNumber = getIntent().getStringExtra("LESSON_NUMBER");
-        int part = getIntent().getIntExtra("LESSON_TYPE", 1);
+        part = getIntent().getIntExtra("LESSON_TYPE", 1);
 
         DatabaseHelper dbHelper = new DatabaseHelper(this);
 
@@ -72,10 +73,16 @@ public class LessonDetailActivity extends AppCompatActivity {
         binding.lessonWebView.loadDataWithBaseURL("file:///android_asset/", lessonText, "text/html; charset=utf-8", "utf-8", null);
         binding.lessonWebView.setWebViewClient(new WebViewClient());
 
-        // Проверка и скрытие кнопки, если текущий урок последний
-        if (mCurrentLessonIndex == mLessons.size() - 1) {
-            binding.lessonNext.setVisibility(View.GONE);
+        if (part == 1){
+            if (mCurrentLessonIndex == mLessons.size() - 2) {
+                binding.lessonNext.setVisibility(View.GONE);
+            }
+        } else {
+            if (mCurrentLessonIndex == mLessons.size() - 1) {
+                binding.lessonNext.setVisibility(View.GONE);
+            }
         }
+
 
         binding.lessonNext.setOnClickListener(v -> {
             if (mCurrentLessonIndex < mLessons.size() - 1) {
@@ -83,6 +90,7 @@ public class LessonDetailActivity extends AppCompatActivity {
                 Lessons nextLesson = mLessons.get(mCurrentLessonIndex);
                 Intent intent = new Intent(this, LessonDetailActivity.class);
                 intent.putExtra("LESSON_NUMBER", nextLesson.getLessonNumber());
+                intent.putExtra("LESSON_TYPE", part);
                 startActivity(intent);
                 finish();
             }

@@ -32,7 +32,7 @@ public class LessonsPickActivity extends AppCompatActivity {
         List<Lessons> lessons = dbHelper.getAllLessons(query);
         dbHelper.close();
 
-        adapter = new LessonsPickAdapter(lessons, this, part);
+        adapter = new LessonsPickAdapter(lessons, this, part, query);
         binding.rvLessons.setAdapter(adapter);
 
         binding.LessonsPickAppBar.setNavigationOnClickListener( v ->{
