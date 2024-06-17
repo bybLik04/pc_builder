@@ -106,6 +106,8 @@ public class BuildInfActivity extends AppCompatActivity {
     }
     private void initViews() {
         binding.buildName.setText(builds.getTitle());
+        String totalCost = String.valueOf(totalPrice) + " " + getString(R.string.ruble);
+        binding.totalPrice.setText(totalCost);
 
         if (builds.getCpu() == null) {
             incomplete = true;

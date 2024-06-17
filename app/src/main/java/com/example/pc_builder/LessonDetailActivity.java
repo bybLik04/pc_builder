@@ -118,7 +118,6 @@ public class LessonDetailActivity extends AppCompatActivity {
             }
         });
 
-        // Show the YouTubePlayerView after WebView content is loaded
         binding.lessonWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(android.webkit.WebView view, String url) {
